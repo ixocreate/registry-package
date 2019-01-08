@@ -1,0 +1,34 @@
+{
+    "name": "ixocreate/registry",
+    "description": "IXOCREATE Registry",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "IXOCREATE"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "ixocreate/contract": "dev-develop"
+    },
+    "require-dev": {
+        "ixocreate/coding-standard": "^1.0",
+        "phpunit/phpunit": "^6.0.6",
+        "php-coveralls/php-coveralls": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ixocreate\\Registry\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "IxocreateMisc\\Registry\\": "tests/misc/",
+            "IxocreateTest\\Registry\\": "tests/src/"
+        }
+    },
+    "scripts": {
+        "fix-cs": "vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --config vendor/ixocreate/coding-standard/.php_cs"
+    }
+}
