@@ -1,5 +1,3 @@
-**This is a draft. Don't use in production**
-
 # IXOCREATE registry
 
 [![Build Status](https://travis-ci.com/ixocreate/registry.svg?branch=master)](https://travis-ci.com/ixocreate/registry)
@@ -14,6 +12,13 @@ Install the package via composer:
 
 ```sh
 composer require ixocreate/registry
+```
+
+## Testing
+
+```sh
+composer install --dev
+phpunit
 ```
 
 ## License
