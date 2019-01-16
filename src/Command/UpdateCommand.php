@@ -9,16 +9,16 @@ declare(strict_types=1);
 
 namespace Ixocreate\Registry\Command;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Ixocreate\CommandBus\Command\AbstractCommand;
-use Ixocreate\CommonTypes\Entity\SchemaType;
 use Ixocreate\Contract\Registry\RegistryEntryInterface;
+use Ixocreate\Contract\Schema\ElementInterface;
 use Ixocreate\Entity\Type\Type;
 use Ixocreate\Registry\Entity\Registry;
 use Ixocreate\Registry\RegistrySubManager;
 use Ixocreate\Registry\Repository\RegistryRepository;
 use Ixocreate\Contract\CommandBus\CommandInterface;
 use Ixocreate\Schema\Builder;
-use Ixocreate\Schema\Schema;
 
 class UpdateCommand extends AbstractCommand implements CommandInterface
 {
@@ -35,18 +35,24 @@ class UpdateCommand extends AbstractCommand implements CommandInterface
      * @var Builder
      */
     private $builder;
+    /**
+     * @var EntityManagerInterface
+     */
+    private $entityManager;
 
     /**
-     * UpdateCommand constructor.
+     * ChangeAttributesCommand constructor.
      * @param RegistryRepository $registryRepository
      * @param RegistrySubManager $registrySubManager
      * @param Builder $builder
+     * @param EntityManagerInterface $master
      */
-    public function __construct(RegistryRepository $registryRepository, RegistrySubManager $registrySubManager, Builder $builder)
+    public function __construct(RegistryRepository $registryRepository, RegistrySubManager $registrySubManager, Builder $builder, EntityManagerInterface $master)
     {
         $this->registryRepository = $registryRepository;
         $this->registrySubManager = $registrySubManager;
         $this->builder = $builder;
+        $this->entityManager = $master;
     }
 
     /**
@@ -57,9 +63,7 @@ class UpdateCommand extends AbstractCommand implements CommandInterface
         return 'registryUpdate';
     }
 
-    /**
-     * @return bool
-     */
+
     public function execute(): bool
     {
         $data = $this->data();
@@ -74,32 +78,30 @@ class UpdateCommand extends AbstractCommand implements CommandInterface
             $registryEntry = $entry;
             break;
         }
-
+        /** @var ElementInterface $element */
         $element = $registryEntry->element($this->builder);
 
-        /** @var Schema $schema */
-        $schema = (new Schema())->withAddedElement($element);
-        /** @var SchemaType $schemaType */
-        $schemaType = $schema->transform($data['data']);
-        $value = $schemaType->convertToDatabaseValue();
+        /** @var Type $type */
+        $elementType = $element->type();
 
-        if (\class_exists($element->type())) {
-            $type = Type::create($data, $element->type());
-            $value = $type->convertToDatabaseValue();
-        }
+        /** @var \Doctrine\DBAL\Types\Type $baseType */
+        $baseType = \Doctrine\DBAL\Types\Type::getType($elementType);
 
-        if ($this->registryRepository->find($data['key']) === null ) {
-            $entity = new Registry([
+        $databaseValue = $baseType->convertToDatabaseValue($data['data'], $this->entityManager->getConnection()->getDatabasePlatform());
+
+
+        /** @var Registry $registry */
+        $registry = $this->registryRepository->find($data['key']);
+        $entity = $registry->with('value', $databaseValue);
+
+        if ($registry === null) {
+            $entity = new Registry ([
                 'id' => $data['key'],
-                'value' => $value,
+                'value' => $databaseValue,
             ]);
-
-            $this->registryRepository->save($entity);
-        } else {
-            /** @var Registry $registry */
-            $registry = $this->registryRepository->find($data['key']);
-            $registry->with('value', $value);
         }
+
+        $this->registryRepository->save($entity);
 
         return true;
     }
