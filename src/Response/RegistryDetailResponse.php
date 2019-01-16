@@ -11,11 +11,13 @@ namespace Ixocreate\Registry\Response;
 
 use Ixocreate\Admin\Response\ApiSuccessResponse;
 use Ixocreate\Contract\Registry\RegistryEntryInterface;
+use Ixocreate\Contract\Schema\ElementInterface;
+use Ixocreate\Contract\Schema\SchemaInterface;
 
 class RegistryDetailResponse extends ApiSuccessResponse
 {
 
-    private $registryEntry;
+    private $schema;
 
     /**
      * @var array
@@ -27,22 +29,22 @@ class RegistryDetailResponse extends ApiSuccessResponse
      */
     private $meta;
 
-    public function __construct(RegistryEntryInterface $registryEntry, $item, $meta)
+    public function __construct(SchemaInterface $schema, $item, $meta)
     {
         $data = [
-            'label' => $registryEntry::serviceName(),
+            'label' => $schema,
             'item' => (object)$item, // make sure an empty array here is an empty object in json
             'meta' => $meta,
         ];
         parent::__construct($data);
-        $this->registryEntry = $registryEntry;
+        $this->schema = $schema;
         $this->item = $item;
         $this->meta = $meta;
     }
 
-    public function registryEntry(): RegistryEntryInterface
+    public function schema(): SchemaInterface
     {
-        return $this->registryEntry;
+        return $this->schema;
     }
 
     public function item(): array
