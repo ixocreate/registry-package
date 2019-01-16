@@ -62,7 +62,10 @@ class UpdateAction implements MiddlewareInterface
     {
         $data = [
             'key' => $request->getAttribute('key'),
-            'data' => $request->getParsedBody(),
+//            'data' => $request->getParsedBody(),
+            'data' => [
+                'testEntry' => 'NEW VALUE!'
+            ]
         ];
 
         $createCommand = $this->commandBus->create(UpdateCommand::class, $data);

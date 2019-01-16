@@ -67,11 +67,12 @@ class UpdateCommand extends AbstractCommand implements CommandInterface
     public function execute(): bool
     {
         $data = $this->data();
+        $key = $data['key'];
         $registryEntry = null;
 
         foreach ($this->registrySubManager->getServices() as $service) {
             $entry = $this->registrySubManager->get($service);
-            if ($entry::serviceName() !== $data['key']) {
+            if ($entry::serviceName() !== $key) {
                 continue;
             }
             /** @var RegistryEntryInterface $registryEntry */
@@ -87,16 +88,15 @@ class UpdateCommand extends AbstractCommand implements CommandInterface
         /** @var \Doctrine\DBAL\Types\Type $baseType */
         $baseType = \Doctrine\DBAL\Types\Type::getType($elementType);
 
-        $databaseValue = $baseType->convertToDatabaseValue($data['data'], $this->entityManager->getConnection()->getDatabasePlatform());
-
+        $databaseValue = $baseType->convertToDatabaseValue($data['data'][$key], $this->entityManager->getConnection()->getDatabasePlatform());
 
         /** @var Registry $registry */
-        $registry = $this->registryRepository->find($data['key']);
+        $registry = $this->registryRepository->find($key);
         $entity = $registry->with('value', $databaseValue);
 
         if ($registry === null) {
             $entity = new Registry ([
-                'id' => $data['key'],
+                'id' => $key,
                 'value' => $databaseValue,
             ]);
         }
