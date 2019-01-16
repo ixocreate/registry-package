@@ -9,12 +9,17 @@ declare(strict_types=1);
 
 namespace Ixocreate\Registry\Action;
 
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Ixocreate\Contract\Registry\RegistryEntryInterface;
+use Ixocreate\Contract\Schema\ElementInterface;
+use Ixocreate\Contract\Schema\SingleElementInterface;
 use Ixocreate\Registry\Entity\Registry;
 use Ixocreate\Registry\RegistrySubManager;
 use Ixocreate\Registry\Repository\RegistryRepository;
 use Ixocreate\Registry\Response\RegistryDetailResponse;
 use Ixocreate\Schema\Builder;
+use Ixocreate\Schema\Schema;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -37,16 +42,23 @@ class DetailAction implements MiddlewareInterface
     private $builder;
 
     /**
+     * @var EntityManager
+     */
+    private $entityManager;
+
+    /**
      * DetailAction constructor.
      * @param RegistryRepository $registryRepository
      * @param RegistrySubManager $registrySubManager
      * @param Builder $builder
+     * @param EntityManagerInterface $master
      */
-    public function __construct(RegistryRepository $registryRepository, RegistrySubManager $registrySubManager, Builder $builder)
+    public function __construct(RegistryRepository $registryRepository, RegistrySubManager $registrySubManager, Builder $builder, EntityManagerInterface $master)
     {
         $this->registryRepository = $registryRepository;
         $this->registrySubManager = $registrySubManager;
         $this->builder = $builder;
+        $this->entityManager = $master;
     }
 
     /**
@@ -58,6 +70,7 @@ class DetailAction implements MiddlewareInterface
      * @param ServerRequestInterface $request
      * @param RequestHandlerInterface $handler
      * @return ResponseInterface
+     * @throws \Doctrine\DBAL\DBALException
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
@@ -73,14 +86,31 @@ class DetailAction implements MiddlewareInterface
             $registryEntry = $entry;
             break;
         }
+        /** @var ElementInterface $element */
+        $element = $registryEntry->element($this->builder);
+
+        $schema = $element;
+
+        if ($element instanceof SingleElementInterface) {
+            $schema = (new Schema())->withAddedElement($element);
+        }
 
         /** @var Registry $registry */
         $registry = $this->registryRepository->find($key);
 
+        $phpValue = null;
+        if ($registry !== null) {
+            /** @var Type $elementType */
+            $elementType = $element->type();
+            /** @var \Doctrine\DBAL\Types\Type $baseType */
+            $baseType = \Doctrine\DBAL\Types\Type::getType($elementType);
+
+            $phpValue = $baseType->convertToPHPValue($registry->value(), $this->entityManager->getConnection()->getDatabasePlatform());
+        }
 
         return new RegistryDetailResponse(
-            $registryEntry,
-            $registry->jsonSerialize(),
+            $schema,
+            $phpValue,
             []
         );
     }
