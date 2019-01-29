@@ -11,6 +11,7 @@ namespace Ixocreate\Registry\Entity;
 
 use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\Mapping\Builder\ClassMetadataBuilder;
+use Ixocreate\CommonTypes\Entity\SchemaType;
 use Ixocreate\Contract\Entity\DatabaseEntityInterface;
 use Ixocreate\Contract\Type\TypeInterface;
 use Ixocreate\Entity\Entity\Definition;
@@ -43,7 +44,7 @@ final class Registry implements EntityInterface, DatabaseEntityInterface
     {
         return new DefinitionCollection([
             new Definition('id', TypeInterface::TYPE_STRING),
-            new Definition('value', TypeInterface::TYPE_STRING)
+            new Definition('value', SchemaType::class)
         ]);
     }
 
@@ -55,6 +56,6 @@ final class Registry implements EntityInterface, DatabaseEntityInterface
         $builder->setTable('registry_registry');
 
         $builder->createField('id', Type::STRING)->makePrimaryKey()->build();
-        $builder->createField('value', Type::TEXT)->nullable(false)->build();
+        $builder->createField('value', SchemaType::serviceName())->nullable(false)->build();
     }
 }

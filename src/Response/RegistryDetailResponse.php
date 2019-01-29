@@ -11,12 +11,15 @@ namespace Ixocreate\Registry\Response;
 
 use Ixocreate\Admin\Response\ApiSuccessResponse;
 use Ixocreate\Contract\Registry\RegistryEntryInterface;
+use Ixocreate\Contract\Resource\AdminAwareInterface;
 use Ixocreate\Contract\Schema\ElementInterface;
 use Ixocreate\Contract\Schema\SchemaInterface;
 
 class RegistryDetailResponse extends ApiSuccessResponse
 {
-
+    /**
+     * @var SchemaInterface
+     */
     private $schema;
 
     /**
@@ -29,10 +32,10 @@ class RegistryDetailResponse extends ApiSuccessResponse
      */
     private $meta;
 
-    public function __construct(SchemaInterface $schema, $item, $meta)
+    public function __construct(SchemaInterface $schema, array $item, array $meta)
     {
         $data = [
-            'label' => $schema,
+            'schema' => $schema,
             'item' => (object)$item, // make sure an empty array here is an empty object in json
             'meta' => $meta,
         ];
@@ -41,7 +44,6 @@ class RegistryDetailResponse extends ApiSuccessResponse
         $this->item = $item;
         $this->meta = $meta;
     }
-
     public function schema(): SchemaInterface
     {
         return $this->schema;

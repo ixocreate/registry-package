@@ -61,7 +61,7 @@ class UpdateAction implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $data = [
-            'key' => $request->getAttribute('key'),
+            'id' => $request->getAttribute('id'),
             'data' => $request->getParsedBody(),
         ];
 
@@ -72,6 +72,6 @@ class UpdateAction implements MiddlewareInterface
             return new ApiErrorResponse('execution_error', $commandResult->messages());
         }
 
-        return new ApiSuccessResponse(['id' => $data['key']]);
+        return new ApiSuccessResponse(['id' => $data['id']]);
     }
 }

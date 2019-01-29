@@ -12,6 +12,8 @@ namespace Ixocreate\Registry\Action;
 use Ixocreate\Admin\Response\ApiSuccessResponse;
 use Ixocreate\Contract\Registry\RegistryEntryInterface;
 use Ixocreate\Registry\RegistrySubManager;
+use Ixocreate\Schema\Listing\ListElement;
+use Ixocreate\Schema\Listing\ListSchema;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -50,9 +52,16 @@ class IndexAction implements MiddlewareInterface
         foreach ($this->registrySubManager->getServices() as $entry) {
             /** @var RegistryEntryInterface $registryEntry */
             $registryEntry = $this->registrySubManager->get($entry);
-            $registryList[] = $registryEntry::serviceName();
+            $registryList[] = ['id' => $registryEntry::serviceName()];
         }
 
-        return new ApiSuccessResponse($registryList);
+        $sorting = null;
+
+        $schema = (new ListSchema())
+            ->withAddedElement(new ListElement('id', 'Bezeichnung'));
+
+        $count = \count($registryList);
+
+        return new ApiSuccessResponse(['schema' => $schema,'items' => $registryList, 'meta' => ['count' => $count]]);
     }
 }

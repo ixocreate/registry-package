@@ -11,14 +11,23 @@ namespace Ixocreate\Registry\Action;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
+use Ixocreate\Admin\Response\ApiDetailResponse;
+use Ixocreate\Admin\Response\ApiSuccessResponse;
+use Ixocreate\CommonTypes\Entity\CollectionType;
+use Ixocreate\CommonTypes\Entity\SchemaType;
 use Ixocreate\Contract\Registry\RegistryEntryInterface;
 use Ixocreate\Contract\Schema\ElementInterface;
+use Ixocreate\Contract\Schema\GroupInterface;
 use Ixocreate\Contract\Schema\SingleElementInterface;
+use Ixocreate\Contract\Schema\TransformableInterface;
+use Ixocreate\Entity\Type\Type;
 use Ixocreate\Registry\Entity\Registry;
 use Ixocreate\Registry\RegistrySubManager;
 use Ixocreate\Registry\Repository\RegistryRepository;
 use Ixocreate\Registry\Response\RegistryDetailResponse;
 use Ixocreate\Schema\Builder;
+use Ixocreate\Schema\Elements\AbstractGroup;
+use Ixocreate\Schema\Elements\AbstractSingleElement;
 use Ixocreate\Schema\Schema;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -70,47 +79,25 @@ class DetailAction implements MiddlewareInterface
      * @param ServerRequestInterface $request
      * @param RequestHandlerInterface $handler
      * @return ResponseInterface
-     * @throws \Doctrine\DBAL\DBALException
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $key = $request->getAttribute('key');
-        $registryEntry = null;
-
-        foreach ($this->registrySubManager->getServices() as $service) {
-            $entry = $this->registrySubManager->get($service);
-            if ($entry::serviceName() !== $key) {
-                continue;
-            }
-            /** @var RegistryEntryInterface $registryEntry */
-            $registryEntry = $entry;
-            break;
-        }
-        /** @var ElementInterface $element */
-        $element = $registryEntry->element($this->builder);
-
-        $schema = $element;
-
-        if ($element instanceof SingleElementInterface) {
-            $schema = (new Schema())->withAddedElement($element);
-        }
+        $id = $request->getAttribute('id');
 
         /** @var Registry $registry */
-        $registry = $this->registryRepository->find($key);
+        $registry = $this->registryRepository->find($id);
 
-        $phpValue = null;
-        if ($registry !== null) {
-            /** @var Type $elementType */
-            $elementType = $element->type();
-            /** @var \Doctrine\DBAL\Types\Type $baseType */
-            $baseType = \Doctrine\DBAL\Types\Type::getType($elementType);
+        $schema = $this->registrySubManager->provideSchema($id, $this->builder);
 
-            $phpValue = $baseType->convertToPHPValue($registry->value(), $this->entityManager->getConnection()->getDatabasePlatform());
+        $items = [];
+
+        if ($registry !== null){
+            $items = $registry->toPublicArray();
         }
 
         return new RegistryDetailResponse(
             $schema,
-            $phpValue,
+            $items,
             []
         );
     }

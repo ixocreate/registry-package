@@ -11,14 +11,21 @@ namespace Ixocreate\Registry\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Ixocreate\CommandBus\Command\AbstractCommand;
+use Ixocreate\CommonTypes\Entity\CollectionType;
+use Ixocreate\CommonTypes\Entity\SchemaType;
 use Ixocreate\Contract\Registry\RegistryEntryInterface;
 use Ixocreate\Contract\Schema\ElementInterface;
+use Ixocreate\Contract\Schema\GroupInterface;
+use Ixocreate\Contract\Schema\SingleElementInterface;
+use Ixocreate\Contract\Type\TypeInterface;
 use Ixocreate\Entity\Type\Type;
 use Ixocreate\Registry\Entity\Registry;
 use Ixocreate\Registry\RegistrySubManager;
 use Ixocreate\Registry\Repository\RegistryRepository;
 use Ixocreate\Contract\CommandBus\CommandInterface;
 use Ixocreate\Schema\Builder;
+use Ixocreate\Schema\Elements\AbstractGroup;
+use Ixocreate\Schema\Elements\AbstractSingleElement;
 
 class UpdateCommand extends AbstractCommand implements CommandInterface
 {
@@ -60,45 +67,31 @@ class UpdateCommand extends AbstractCommand implements CommandInterface
      */
     public static function serviceName(): string
     {
-        return 'registryUpdate';
+        return 'admin.registry-update';
     }
 
 
     public function execute(): bool
     {
         $data = $this->data();
-        $key = $data['key'];
-        $registryEntry = null;
+        $id = $data['id'];
 
-        foreach ($this->registrySubManager->getServices() as $service) {
-            $entry = $this->registrySubManager->get($service);
-            if ($entry::serviceName() !== $key) {
-                continue;
-            }
-            /** @var RegistryEntryInterface $registryEntry */
-            $registryEntry = $entry;
-            break;
-        }
-        /** @var ElementInterface $element */
-        $element = $registryEntry->element($this->builder);
+        /** @var SchemaType $type */
+        $type = Type::create($data['data'], SchemaType::class, [
+            'provider' => ['class' => RegistrySubManager::class, 'name' => $id]
+        ]);
 
-        /** @var Type $type */
-        $elementType = $element->type();
 
-        /** @var \Doctrine\DBAL\Types\Type $baseType */
-        $baseType = \Doctrine\DBAL\Types\Type::getType($elementType);
-
-        $databaseValue = $baseType->convertToDatabaseValue($data['data'][$key], $this->entityManager->getConnection()->getDatabasePlatform());
+        $entity = new Registry ([
+            'id' => $id,
+            'value' => $type,
+        ]);
 
         /** @var Registry $registry */
-        $registry = $this->registryRepository->find($key);
-        $entity = $registry->with('value', $databaseValue);
+        $registry = $this->registryRepository->find($id);
 
-        if ($registry === null) {
-            $entity = new Registry ([
-                'id' => $key,
-                'value' => $databaseValue,
-            ]);
+        if ($registry !== null) {
+            $entity = $registry->with('value', $type);
         }
 
         $this->registryRepository->save($entity);

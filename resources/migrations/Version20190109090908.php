@@ -5,7 +5,7 @@ namespace IxocreateMigration;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\DBAL\Types\Type;
 use Doctrine\Migrations\AbstractMigration;
-use Ixocreate\CommonTypes\Entity\UuidType;
+use Ixocreate\CommonTypes\Entity\SchemaType;
 
 final class Version20190109090908 extends AbstractMigration
 {
@@ -14,7 +14,7 @@ final class Version20190109090908 extends AbstractMigration
         $table = $schema->createTable('registry_registry');
 
         $table->addColumn('id', Type::STRING);
-        $table->addColumn('value', Type::TEXT);
+        $table->addColumn('value', SchemaType::serviceName());
         $table->setPrimaryKey(['id']);
     }
 
