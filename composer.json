@@ -8,9 +8,11 @@
             "name": "IXOCREATE"
         }
     ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "php": "^7.1",
-        "ixocreate/contract": "dev-develop"
+        "ixocreate/registry-contract": "dev-develop"
     },
     "require-dev": {
         "ixocreate/coding-standard": "^1.0",
