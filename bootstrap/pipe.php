@@ -22,8 +22,8 @@ $pipe->segmentPipe(AdminConfig::class)(function (PipeConfigurator $pipe) {
     $pipe->segment('/api')(function (PipeConfigurator $pipe) {
         $pipe->group("admin.authorized")(function (GroupPipeConfigurator $pipe) {
             $pipe->get('/registry', IndexAction::class, 'admin.api.registry.index');
-            $pipe->get('/registry/{key}', DetailAction::class, 'admin.api.registry.detail');
-            $pipe->patch('/registry/{key}', UpdateAction::class, 'admin.api.registry.update');
+            $pipe->get('/registry/{id}', DetailAction::class, 'admin.api.registry.detail');
+            $pipe->patch('/registry/{id}', UpdateAction::class, 'admin.api.registry.update');
         });
     });
 });
