@@ -15,7 +15,6 @@ use Ixocreate\Database\Repository\Factory\RepositorySubManager;
 use Ixocreate\Registry\Registry;
 use Ixocreate\Registry\RegistrySubManager;
 use Ixocreate\Registry\Repository\RegistryRepository;
-use Ixocreate\Schema\Builder;
 
 class RegistryFactory implements FactoryInterface
 {
@@ -34,9 +33,6 @@ class RegistryFactory implements FactoryInterface
         /** @var RegistrySubManager $registrySubManager */
         $registrySubManager = $container->get(RegistrySubManager::class);
 
-        /** @var Builder $builder */
-        $builder = $container->get(Builder::class);
-
-        return new Registry($registryRepository, $registrySubManager, $builder);
+        return new Registry($registryRepository, $registrySubManager);
     }
 }
