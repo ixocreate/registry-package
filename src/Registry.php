@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Ixocreate\Registry;
 
 use Ixocreate\CommonTypes\Entity\CollectionType;
-use Ixocreate\Contract\Registry\RegistryInterface;
+use Ixocreate\Registry\RegistryInterface;
 use Ixocreate\Registry\Repository\RegistryRepository;
 
 final class Registry implements RegistryInterface
