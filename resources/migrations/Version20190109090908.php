@@ -1,10 +1,12 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace IxocreateMigration;
 
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\DBAL\Types\Type;
 use Doctrine\Migrations\AbstractMigration;
+use Ixocreate\CommonTypes\Entity\DateTimeType;
 use Ixocreate\CommonTypes\Entity\SchemaType;
 
 final class Version20190109090908 extends AbstractMigration
@@ -15,6 +17,9 @@ final class Version20190109090908 extends AbstractMigration
 
         $table->addColumn('id', Type::STRING);
         $table->addColumn('value', SchemaType::serviceName());
+        $table->addColumn('createdAt', DateTimeType::serviceName());
+        $table->addColumn('updatedAt', DateTimeType::serviceName());
+
         $table->setPrimaryKey(['id']);
     }
 
