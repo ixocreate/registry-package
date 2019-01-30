@@ -31,7 +31,7 @@ final class Registry implements RegistryInterface
         $this->registrySubManager = $registrySubManager;
     }
 
-    public function all(): ?array
+    public function all(): array
     {
         $array = [];
         foreach ($this->registrySubManager->getServices() as $service) {
