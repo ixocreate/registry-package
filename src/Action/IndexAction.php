@@ -52,13 +52,13 @@ class IndexAction implements MiddlewareInterface
         foreach ($this->registrySubManager->getServices() as $entry) {
             /** @var RegistryEntryInterface $registryEntry */
             $registryEntry = $this->registrySubManager->get($entry);
-            $registryList[] = ['id' => $registryEntry::serviceName()];
+            $registryList[] = ['id' => $registryEntry::serviceName(), 'label' => $registryEntry->label()];
         }
 
         $sorting = null;
 
         $schema = (new ListSchema())
-            ->withAddedElement(new ListElement('id', 'Bezeichnung'));
+            ->withAddedElement(new ListElement('label', 'Bezeichnung'));
 
         $count = \count($registryList);
 
