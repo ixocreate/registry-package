@@ -11,6 +11,7 @@ namespace Ixocreate\Registry\Entity;
 
 use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\Mapping\Builder\ClassMetadataBuilder;
+use Ixocreate\CommonTypes\Entity\DateTimeType;
 use Ixocreate\CommonTypes\Entity\SchemaType;
 use Ixocreate\Contract\Entity\DatabaseEntityInterface;
 use Ixocreate\Contract\Type\TypeInterface;
@@ -27,6 +28,10 @@ final class Registry implements EntityInterface, DatabaseEntityInterface
 
     private $value;
 
+    private $createdAt;
+
+    private $updatedAt;
+
     public function id(): string
     {
         return $this->id;
@@ -37,6 +42,16 @@ final class Registry implements EntityInterface, DatabaseEntityInterface
         return $this->value;
     }
 
+    public function createdAt()
+    {
+        return $this->createdAt;
+    }
+
+    public function updatedAt()
+    {
+        return $this->updatedAt;
+    }
+
     /**
      * @return DefinitionCollection
      */
@@ -44,7 +59,9 @@ final class Registry implements EntityInterface, DatabaseEntityInterface
     {
         return new DefinitionCollection([
             new Definition('id', TypeInterface::TYPE_STRING),
-            new Definition('value', SchemaType::class)
+            new Definition('value', SchemaType::class),
+            new Definition('createdAt', DateTimeType::class),
+            new Definition('updatedAt', DateTimeType::class),
         ]);
     }
 
@@ -57,5 +74,7 @@ final class Registry implements EntityInterface, DatabaseEntityInterface
 
         $builder->createField('id', Type::STRING)->makePrimaryKey()->build();
         $builder->createField('value', SchemaType::serviceName())->nullable(false)->build();
+        $builder->createField('createdAt', DateTimeType::serviceName())->nullable(false)->build();
+        $builder->createField('updatedAt', DateTimeType::serviceName())->nullable(false)->build();
     }
 }

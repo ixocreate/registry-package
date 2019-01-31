@@ -81,10 +81,11 @@ class UpdateCommand extends AbstractCommand implements CommandInterface
             'provider' => ['class' => RegistrySubManager::class, 'name' => $id]
         ]);
 
-
         $entity = new Registry ([
             'id' => $id,
             'value' => $type,
+            'createdAt' => new \DateTime(),
+            'updatedAt' => new \DateTime()
         ]);
 
         /** @var Registry $registry */
@@ -92,6 +93,7 @@ class UpdateCommand extends AbstractCommand implements CommandInterface
 
         if ($registry !== null) {
             $entity = $registry->with('value', $type);
+            $entity = $entity->with('updatedAt', new \DateTime());
         }
 
         $this->registryRepository->save($entity);
