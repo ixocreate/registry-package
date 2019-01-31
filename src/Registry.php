@@ -56,16 +56,8 @@ final class Registry implements RegistryInterface
         $value = null;
         if ($entity !== null) {
             $value = $entity->value()->value();
-            $result = [];
-            foreach ($value as $entry) {
-                if ($entry instanceof CollectionType){
-                    foreach ($entry as $group) {
-                        $result[] = $group->value();
-                    }
-                }
-            }
-            if (!empty($result)) {
-                return $result;
+            if (\count($value) > 0) {
+                return array_pop($value);
             }
         }
         return $value;
