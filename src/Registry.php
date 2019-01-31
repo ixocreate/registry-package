@@ -52,20 +52,23 @@ final class Registry implements RegistryInterface
 
     public function get(string $name)
     {
-        $entry = $this->registryRepository->find($name);
+        $entity = $this->registryRepository->find($name);
         $value = null;
-        if ($entry !== null) {
-            $value = $entry->value()->value();
-            if (\array_key_exists($name, $value) && $value[$name] instanceof CollectionType) {
-                $return = [];
-                foreach ($value[$name] as $item) {
-                    foreach ($item->value() as $key => $itemValue) {
-                        $return[$key] = $itemValue;
+        if ($entity !== null) {
+            $value = $entity->value()->value();
+            $result = [];
+            foreach ($value as $entry) {
+                if ($entry instanceof CollectionType){
+                    foreach ($entry as $group) {
+                        $result[] = $group->value();
                     }
                 }
-                return $return;
+            }
+            if (!empty($result)) {
+                return $result;
             }
         }
         return $value;
     }
+
 }
