@@ -26,10 +26,12 @@ class UpdateAction implements MiddlewareInterface
      * @var RegistryRepository
      */
     private $registryRepository;
+
     /**
      * @var RegistrySubManager
      */
     private $registrySubManager;
+
     /**
      * @var CommandBus
      */

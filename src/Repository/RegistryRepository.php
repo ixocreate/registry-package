@@ -14,7 +14,6 @@ use Ixocreate\Registry\Entity\Registry;
 
 class RegistryRepository extends AbstractRepository
 {
-
     /**
      * @return string
      */
@@ -22,6 +21,4 @@ class RegistryRepository extends AbstractRepository
     {
         return Registry::class;
     }
-
-
 }

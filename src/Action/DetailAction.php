@@ -11,24 +11,11 @@ namespace Ixocreate\Registry\Action;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
-use Ixocreate\Admin\Response\ApiDetailResponse;
-use Ixocreate\Admin\Response\ApiSuccessResponse;
-use Ixocreate\CommonTypes\Entity\CollectionType;
-use Ixocreate\CommonTypes\Entity\SchemaType;
-use Ixocreate\Contract\Registry\RegistryEntryInterface;
-use Ixocreate\Contract\Schema\ElementInterface;
-use Ixocreate\Contract\Schema\GroupInterface;
-use Ixocreate\Contract\Schema\SingleElementInterface;
-use Ixocreate\Contract\Schema\TransformableInterface;
-use Ixocreate\Entity\Type\Type;
 use Ixocreate\Registry\Entity\Registry;
 use Ixocreate\Registry\RegistrySubManager;
 use Ixocreate\Registry\Repository\RegistryRepository;
 use Ixocreate\Registry\Response\RegistryDetailResponse;
 use Ixocreate\Schema\Builder;
-use Ixocreate\Schema\Elements\AbstractGroup;
-use Ixocreate\Schema\Elements\AbstractSingleElement;
-use Ixocreate\Schema\Schema;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -36,15 +23,16 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 class DetailAction implements MiddlewareInterface
 {
-
     /**
      * @var RegistryRepository
      */
     private $registryRepository;
+
     /**
      * @var RegistrySubManager
      */
     private $registrySubManager;
+
     /**
      * @var Builder
      */
@@ -91,7 +79,7 @@ class DetailAction implements MiddlewareInterface
 
         $items = [];
 
-        if ($registry !== null){
+        if ($registry !== null) {
             $items = $registry->toPublicArray();
         }
 

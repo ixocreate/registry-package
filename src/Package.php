@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace Ixocreate\Registry;
 
-
 use Ixocreate\Contract\Application\ConfiguratorRegistryInterface;
 use Ixocreate\Contract\Application\PackageInterface;
 use Ixocreate\Contract\Application\ServiceRegistryInterface;
@@ -18,7 +17,6 @@ use Ixocreate\Registry\BootstrapItem\RegistryBootstrapItem;
 
 final class Package implements PackageInterface
 {
-
     /**
      * @param ConfiguratorRegistryInterface $configuratorRegistry
      */
@@ -39,7 +37,7 @@ final class Package implements PackageInterface
     public function getBootstrapItems(): ?array
     {
         return [
-            RegistryBootstrapItem::class
+            RegistryBootstrapItem::class,
         ];
     }
 

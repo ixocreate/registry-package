@@ -11,37 +11,31 @@ namespace Ixocreate\Registry\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Ixocreate\CommandBus\Command\AbstractCommand;
-use Ixocreate\CommonTypes\Entity\CollectionType;
 use Ixocreate\CommonTypes\Entity\SchemaType;
-use Ixocreate\Contract\Registry\RegistryEntryInterface;
-use Ixocreate\Contract\Schema\ElementInterface;
-use Ixocreate\Contract\Schema\GroupInterface;
-use Ixocreate\Contract\Schema\SingleElementInterface;
-use Ixocreate\Contract\Type\TypeInterface;
 use Ixocreate\Entity\Type\Type;
 use Ixocreate\Registry\Entity\Registry;
 use Ixocreate\Registry\RegistrySubManager;
 use Ixocreate\Registry\Repository\RegistryRepository;
 use Ixocreate\Contract\CommandBus\CommandInterface;
 use Ixocreate\Schema\Builder;
-use Ixocreate\Schema\Elements\AbstractGroup;
-use Ixocreate\Schema\Elements\AbstractSingleElement;
 
 class UpdateCommand extends AbstractCommand implements CommandInterface
 {
-
     /**
      * @var RegistryRepository
      */
     private $registryRepository;
+
     /**
      * @var RegistrySubManager
      */
     private $registrySubManager;
+
     /**
      * @var Builder
      */
     private $builder;
+
     /**
      * @var EntityManagerInterface
      */
@@ -70,7 +64,6 @@ class UpdateCommand extends AbstractCommand implements CommandInterface
         return 'admin.registry-update';
     }
 
-
     public function execute(): bool
     {
         $data = $this->data();
@@ -78,14 +71,14 @@ class UpdateCommand extends AbstractCommand implements CommandInterface
 
         /** @var SchemaType $type */
         $type = Type::create($data['data'], SchemaType::class, [
-            'provider' => ['class' => RegistrySubManager::class, 'name' => $id]
+            'provider' => ['class' => RegistrySubManager::class, 'name' => $id],
         ]);
 
-        $entity = new Registry ([
+        $entity = new Registry([
             'id' => $id,
             'value' => $type,
             'createdAt' => new \DateTime(),
-            'updatedAt' => new \DateTime()
+            'updatedAt' => new \DateTime(),
         ]);
 
         /** @var Registry $registry */

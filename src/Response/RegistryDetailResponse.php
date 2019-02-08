@@ -10,12 +10,9 @@ declare(strict_types=1);
 namespace Ixocreate\Registry\Response;
 
 use Ixocreate\Admin\Response\ApiSuccessResponse;
-use Ixocreate\Contract\Registry\RegistryEntryInterface;
-use Ixocreate\Contract\Resource\AdminAwareInterface;
-use Ixocreate\Contract\Schema\ElementInterface;
 use Ixocreate\Contract\Schema\SchemaInterface;
 
-class RegistryDetailResponse extends ApiSuccessResponse
+final class RegistryDetailResponse extends ApiSuccessResponse
 {
     /**
      * @var SchemaInterface
@@ -44,6 +41,7 @@ class RegistryDetailResponse extends ApiSuccessResponse
         $this->item = $item;
         $this->meta = $meta;
     }
+
     public function schema(): SchemaInterface
     {
         return $this->schema;
