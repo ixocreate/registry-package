@@ -9,8 +9,12 @@ declare(strict_types=1);
 
 namespace Ixocreate\Registry;
 
+use Ixocreate\CommonTypes\Entity\SchemaType;
+use Ixocreate\Contract\Registry\RegistryEntryInterface;
 use Ixocreate\Contract\Registry\RegistryInterface;
+use Ixocreate\Contract\Schema\StructuralGroupingInterface;
 use Ixocreate\Registry\Repository\RegistryRepository;
+use Ixocreate\Schema\Builder;
 
 final class Registry implements RegistryInterface
 {
@@ -25,14 +29,20 @@ final class Registry implements RegistryInterface
     private $registrySubManager;
 
     /**
+     * @var Builder
+     */
+    private $builder;
+
+    /**
      * Registry constructor.
      * @param RegistryRepository $registryRepository
      * @param RegistrySubManager $registrySubManager
      */
-    public function __construct(RegistryRepository $registryRepository, RegistrySubManager $registrySubManager)
+    public function __construct(RegistryRepository $registryRepository, RegistrySubManager $registrySubManager, Builder $builder)
     {
         $this->registryRepository = $registryRepository;
         $this->registrySubManager = $registrySubManager;
+        $this->builder = $builder;
     }
 
     /**
@@ -62,12 +72,18 @@ final class Registry implements RegistryInterface
      */
     public function get(string $name)
     {
+        /** @var RegistryEntryInterface $entry */
+        $entry = $this->registrySubManager->get($name);
+        $element = $entry->element($this->builder);
+
         $entity = $this->registryRepository->find($name);
         $value = null;
         if ($entity !== null) {
-            $value = $entity->value()->value();
-            // TODO: maybe check on some interface instead of counting
-            if (\count($value) == 1) {
+            $value = $entity->value();
+            if ($element->inputType() !== SchemaType::class) {
+                $value = $value->value();
+            }
+            if (!$element instanceof StructuralGroupingInterface) {
                 return \array_pop($value);
             }
             return $value;
