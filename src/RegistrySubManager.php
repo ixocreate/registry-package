@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Ixocreate\Registry;
 
+use Ixocreate\CommonTypes\Entity\SchemaType;
 use Ixocreate\Contract\Registry\RegistryEntryInterface;
 use Ixocreate\Contract\Schema\SchemaInterface;
 use Ixocreate\Contract\Schema\SchemaProviderInterface;
@@ -18,11 +19,23 @@ use Ixocreate\ServiceManager\SubManager\SubManager;
 
 class RegistrySubManager extends SubManager implements SchemaProviderInterface
 {
+    /**
+     * @param $name
+     * @param Builder $builder
+     * @param array $options
+     * @return SchemaInterface
+     */
     public function provideSchema($name, Builder $builder, $options = []): SchemaInterface
     {
         /** @var RegistryEntryInterface $registryEntry */
         $registryEntry = $this->get($name);
 
-        return (new Schema())->withAddedElement($registryEntry->element($builder));
+        $element = $registryEntry->element($builder);
+
+        if ($element->inputType() === SchemaType::class) {
+            return (new Schema())->withElements($element->elements());
+        }
+
+        return (new Schema())->withAddedElement($element);
     }
 }
