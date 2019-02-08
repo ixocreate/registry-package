@@ -12,7 +12,7 @@ namespace Ixocreate\Registry\Repository;
 use Ixocreate\Database\Repository\AbstractRepository;
 use Ixocreate\Registry\Entity\Registry;
 
-class RegistryRepository extends AbstractRepository
+final class RegistryRepository extends AbstractRepository
 {
     /**
      * @return string

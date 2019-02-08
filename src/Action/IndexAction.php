@@ -19,7 +19,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class IndexAction implements MiddlewareInterface
+final class IndexAction implements MiddlewareInterface
 {
     /**
      * @var RegistrySubManager

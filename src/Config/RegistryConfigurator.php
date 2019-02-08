@@ -16,7 +16,7 @@ use Ixocreate\Registry\RegistrySubManager;
 use Ixocreate\ServiceManager\Factory\AutowireFactory;
 use Ixocreate\ServiceManager\SubManager\SubManagerConfigurator;
 
-class RegistryConfigurator implements ConfiguratorInterface
+final class RegistryConfigurator implements ConfiguratorInterface
 {
     /**
      * @var SubManagerConfigurator

@@ -19,7 +19,7 @@ use Ixocreate\Registry\Repository\RegistryRepository;
 use Ixocreate\Contract\CommandBus\CommandInterface;
 use Ixocreate\Schema\Builder;
 
-class UpdateCommand extends AbstractCommand implements CommandInterface
+final class UpdateCommand extends AbstractCommand implements CommandInterface
 {
     /**
      * @var RegistryRepository

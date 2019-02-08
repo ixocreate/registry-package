@@ -16,7 +16,7 @@ use Ixocreate\Registry\Registry;
 use Ixocreate\Registry\RegistrySubManager;
 use Ixocreate\Registry\Repository\RegistryRepository;
 
-class RegistryFactory implements FactoryInterface
+final class RegistryFactory implements FactoryInterface
 {
     /**
      * @param ServiceManagerInterface $container
