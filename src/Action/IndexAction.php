@@ -58,7 +58,7 @@ final class IndexAction implements MiddlewareInterface
         $sorting = null;
 
         $schema = (new ListSchema())
-            ->withAddedElement(new ListElement('label', 'Bezeichnung'));
+            ->withAddedElement(new ListElement('label', 'Bezeichnung', true, false));
 
         $count = \count($registryList);
 
