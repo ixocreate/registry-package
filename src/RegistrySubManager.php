@@ -11,6 +11,7 @@ namespace Ixocreate\Registry;
 
 use Ixocreate\CommonTypes\Entity\SchemaType;
 use Ixocreate\Contract\Registry\RegistryEntryInterface;
+use Ixocreate\Contract\Schema\BuilderInterface;
 use Ixocreate\Contract\Schema\SchemaInterface;
 use Ixocreate\Contract\Schema\SchemaProviderInterface;
 use Ixocreate\Schema\Builder;
@@ -25,7 +26,7 @@ final class RegistrySubManager extends SubManager implements SchemaProviderInter
      * @param array $options
      * @return SchemaInterface
      */
-    public function provideSchema($name, Builder $builder, $options = []): SchemaInterface
+    public function provideSchema($name, BuilderInterface $builder, $options = []): SchemaInterface
     {
         /** @var RegistryEntryInterface $registryEntry */
         $registryEntry = $this->get($name);
