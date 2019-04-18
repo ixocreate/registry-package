@@ -7,15 +7,15 @@
 
 declare(strict_types=1);
 
-namespace Ixocreate\Package\Registry;
+namespace Ixocreate\Registry\Package;
 
-use Ixocreate\Package\Type\Entity\SchemaType;
-use Ixocreate\Package\Registry\RegistryEntryInterface;
-use Ixocreate\Package\Schema\BuilderInterface;
-use Ixocreate\Package\Schema\SchemaInterface;
-use Ixocreate\Package\Schema\SchemaProviderInterface;
-use Ixocreate\Package\Schema\Builder;
-use Ixocreate\Package\Schema\Schema;
+use Ixocreate\Type\Package\Entity\SchemaType;
+use Ixocreate\Registry\Package\RegistryEntryInterface;
+use Ixocreate\Schema\Package\BuilderInterface;
+use Ixocreate\Schema\Package\SchemaInterface;
+use Ixocreate\Schema\Package\SchemaProviderInterface;
+use Ixocreate\Schema\Package\Builder;
+use Ixocreate\Schema\Package\Schema;
 use Ixocreate\ServiceManager\SubManager\SubManager;
 
 final class RegistrySubManager extends SubManager implements SchemaProviderInterface

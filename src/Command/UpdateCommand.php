@@ -7,17 +7,17 @@
 
 declare(strict_types=1);
 
-namespace Ixocreate\Package\Registry\Command;
+namespace Ixocreate\Registry\Package\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Ixocreate\Package\CommandBus\Command\AbstractCommand;
-use Ixocreate\Package\Type\Entity\SchemaType;
-use Ixocreate\Package\Entity\Type\Type;
-use Ixocreate\Package\Registry\Entity\Registry;
-use Ixocreate\Package\Registry\RegistrySubManager;
-use Ixocreate\Package\Registry\Repository\RegistryRepository;
-use Ixocreate\Package\CommandBus\CommandInterface;
-use Ixocreate\Package\Schema\Builder;
+use Ixocreate\CommandBus\Package\Command\AbstractCommand;
+use Ixocreate\Type\Package\Entity\SchemaType;
+use Ixocreate\Entity\Package\Type\Type;
+use Ixocreate\Registry\Package\Entity\Registry;
+use Ixocreate\Registry\Package\RegistrySubManager;
+use Ixocreate\Registry\Package\Repository\RegistryRepository;
+use Ixocreate\CommandBus\Package\CommandInterface;
+use Ixocreate\Schema\Package\Builder;
 
 final class UpdateCommand extends AbstractCommand implements CommandInterface
 {

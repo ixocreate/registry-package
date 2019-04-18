@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Ixocreate\Package\Registry;
+namespace Ixocreate\Registry\Package;
 
-use Ixocreate\Package\Schema\ElementInterface;
-use Ixocreate\Package\Schema\BuilderInterface;
+use Ixocreate\Schema\Package\ElementInterface;
+use Ixocreate\Schema\Package\BuilderInterface;
 use Ixocreate\ServiceManager\NamedServiceInterface;
 
 interface RegistryEntryInterface extends NamedServiceInterface

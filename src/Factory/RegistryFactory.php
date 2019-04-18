@@ -7,15 +7,15 @@
 
 declare(strict_types=1);
 
-namespace Ixocreate\Package\Registry\Factory;
+namespace Ixocreate\Registry\Package\Factory;
 
 use Ixocreate\ServiceManager\FactoryInterface;
 use Ixocreate\ServiceManager\ServiceManagerInterface;
-use Ixocreate\Package\Database\Repository\Factory\RepositorySubManager;
-use Ixocreate\Package\Registry\Registry;
-use Ixocreate\Package\Registry\RegistrySubManager;
-use Ixocreate\Package\Registry\Repository\RegistryRepository;
-use Ixocreate\Package\Schema\Builder;
+use Ixocreate\Database\Package\Repository\Factory\RepositorySubManager;
+use Ixocreate\Registry\Package\Registry;
+use Ixocreate\Registry\Package\RegistrySubManager;
+use Ixocreate\Registry\Package\Repository\RegistryRepository;
+use Ixocreate\Schema\Package\Builder;
 
 final class RegistryFactory implements FactoryInterface
 {

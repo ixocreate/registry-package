@@ -7,18 +7,18 @@
 
 declare(strict_types=1);
 
-namespace Ixocreate\Package\Registry\Entity;
+namespace Ixocreate\Registry\Package\Entity;
 
 use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\Mapping\Builder\ClassMetadataBuilder;
-use Ixocreate\Package\Type\Entity\DateTimeType;
-use Ixocreate\Package\Type\Entity\SchemaType;
+use Ixocreate\Type\Package\Entity\DateTimeType;
+use Ixocreate\Type\Package\Entity\SchemaType;
 use Ixocreate\Entity\DatabaseEntityInterface;
-use Ixocreate\Package\Type\TypeInterface;
-use Ixocreate\Package\Entity\Entity\Definition;
-use Ixocreate\Package\Entity\Entity\DefinitionCollection;
-use Ixocreate\Package\Entity\Entity\EntityInterface;
-use Ixocreate\Package\Entity\Entity\EntityTrait;
+use Ixocreate\Type\Package\TypeInterface;
+use Ixocreate\Entity\Package\Entity\Definition;
+use Ixocreate\Entity\Package\Entity\DefinitionCollection;
+use Ixocreate\Entity\Package\Entity\EntityInterface;
+use Ixocreate\Entity\Package\Entity\EntityTrait;
 
 final class Registry implements EntityInterface, DatabaseEntityInterface
 {

@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace Ixocreate\Package\Registry;
+namespace Ixocreate\Registry\Package;
 
-use Ixocreate\Package\Registry\Command\UpdateCommand;
+use Ixocreate\Registry\Package\Command\UpdateCommand;
 
-/** @var \Ixocreate\Package\CommandBus\Configurator $commandBus */
+/** @var \Ixocreate\CommandBus\Package\Configurator $commandBus */
 $commandBus->addCommand(UpdateCommand::class);

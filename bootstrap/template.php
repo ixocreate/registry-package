@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Ixocreate\Package\Registry;
+namespace Ixocreate\Registry\Package;
 
-use Ixocreate\Package\Registry\Template\RegistryExtension;
-use Ixocreate\Package\Template\TemplateConfigurator;
+use Ixocreate\Registry\Package\Template\RegistryExtension;
+use Ixocreate\Template\Package\TemplateConfigurator;
 
 /** @var TemplateConfigurator $template */
 
