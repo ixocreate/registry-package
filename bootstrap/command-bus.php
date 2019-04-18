@@ -9,7 +9,9 @@ declare(strict_types=1);
 
 namespace Ixocreate\Registry;
 
+use Ixocreate\CommandBus\CommandBusConfigurator;
 use Ixocreate\Registry\Command\UpdateCommand;
 
-/** @var \Ixocreate\CommandBus\Configurator $commandBus */
+/** @var CommandBusConfigurator $commandBus */
+
 $commandBus->addCommand(UpdateCommand::class);

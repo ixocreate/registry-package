@@ -39,12 +39,16 @@ final class UpdateAction implements MiddlewareInterface
 
     /**
      * UpdateAction constructor.
+     *
      * @param RegistryRepository $registryRepository
      * @param RegistrySubManager $registrySubManager
      * @param CommandBus $commandBus
      */
-    public function __construct(RegistryRepository $registryRepository, RegistrySubManager $registrySubManager, CommandBus $commandBus)
-    {
+    public function __construct(
+        RegistryRepository $registryRepository,
+        RegistrySubManager $registrySubManager,
+        CommandBus $commandBus
+    ) {
         $this->registryRepository = $registryRepository;
         $this->registrySubManager = $registrySubManager;
         $this->commandBus = $commandBus;
@@ -52,10 +56,10 @@ final class UpdateAction implements MiddlewareInterface
 
     /**
      * Process an incoming server request.
-     *
      * Processes an incoming server request in order to produce a response.
      * If unable to produce the response itself, it may delegate to the provided
      * request handler to do so.
+     *
      * @param ServerRequestInterface $request
      * @param RequestHandlerInterface $handler
      * @return ResponseInterface

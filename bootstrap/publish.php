@@ -9,7 +9,8 @@ declare(strict_types=1);
 
 namespace Ixocreate\Registry;
 
-/** @var PublishConfigurator $publish */
 use Ixocreate\Application\Publish\PublishConfigurator;
+
+/** @var PublishConfigurator $publish */
 
 $publish->add('migrations', __DIR__ . '/../resources/migrations');

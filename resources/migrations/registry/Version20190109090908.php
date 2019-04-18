@@ -11,7 +11,7 @@ use Ixocreate\Type\Entity\SchemaType;
 
 final class Version20190109090908 extends AbstractMigration
 {
-    public function up(Schema $schema) : void
+    public function up(Schema $schema): void
     {
         $table = $schema->createTable('registry_registry');
 
@@ -23,7 +23,7 @@ final class Version20190109090908 extends AbstractMigration
         $table->setPrimaryKey(['id']);
     }
 
-    public function down(Schema $schema) : void
+    public function down(Schema $schema): void
     {
         $schema->dropTable('registry_registry');
     }

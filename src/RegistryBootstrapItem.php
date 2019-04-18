@@ -7,11 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Ixocreate\Registry\Bootstrap;
+namespace Ixocreate\Registry;
 
-use Ixocreate\Application\Service\Bootstrap\BootstrapItemInterface;
-use Ixocreate\Application\Service\Configurator\ConfiguratorInterface;
-use Ixocreate\Registry\Config\RegistryConfigurator;
+use Ixocreate\Application\BootstrapItemInterface;
+use Ixocreate\Application\ConfiguratorInterface;
 
 final class RegistryBootstrapItem implements BootstrapItemInterface
 {

@@ -7,14 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Ixocreate\Registry\Config;
+namespace Ixocreate\Registry;
 
-use Ixocreate\Application\Service\Configurator\ConfiguratorInterface;
-use Ixocreate\Application\Service\Registry\ServiceRegistryInterface;
-use Ixocreate\Registry\RegistryEntryInterface;
-use Ixocreate\Registry\RegistrySubManager;
-use Ixocreate\ServiceManager\Factory\AutowireFactory;
+use Ixocreate\Application\ConfiguratorInterface;
+use Ixocreate\Application\Service\ServiceRegistryInterface;
 use Ixocreate\Application\Service\SubManagerConfigurator;
+use Ixocreate\ServiceManager\Factory\AutowireFactory;
 
 final class RegistryConfigurator implements ConfiguratorInterface
 {
@@ -28,7 +26,10 @@ final class RegistryConfigurator implements ConfiguratorInterface
      */
     public function __construct()
     {
-        $this->subManagerConfigurator = new SubManagerConfigurator(RegistrySubManager::class, RegistryEntryInterface::class);
+        $this->subManagerConfigurator = new SubManagerConfigurator(
+            RegistrySubManager::class,
+            RegistryEntryInterface::class
+        );
     }
 
     /**

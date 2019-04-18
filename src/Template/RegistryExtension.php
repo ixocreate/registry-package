@@ -9,9 +9,9 @@ declare(strict_types=1);
 
 namespace Ixocreate\Registry\Template;
 
+use Ixocreate\Registry\Registry;
 use Ixocreate\Registry\RegistryInterface;
 use Ixocreate\Template\ExtensionInterface;
-use Ixocreate\Registry\Registry;
 
 final class RegistryExtension implements ExtensionInterface
 {

@@ -11,13 +11,13 @@ namespace Ixocreate\Registry\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Ixocreate\CommandBus\Command\AbstractCommand;
-use Ixocreate\Type\Entity\SchemaType;
+use Ixocreate\CommandBus\CommandInterface;
 use Ixocreate\Entity\Type\Type;
 use Ixocreate\Registry\Entity\Registry;
 use Ixocreate\Registry\RegistrySubManager;
 use Ixocreate\Registry\Repository\RegistryRepository;
-use Ixocreate\CommandBus\CommandInterface;
 use Ixocreate\Schema\Builder;
+use Ixocreate\Type\Entity\SchemaType;
 
 final class UpdateCommand extends AbstractCommand implements CommandInterface
 {
@@ -43,13 +43,18 @@ final class UpdateCommand extends AbstractCommand implements CommandInterface
 
     /**
      * ChangeAttributesCommand constructor.
+     *
      * @param RegistryRepository $registryRepository
      * @param RegistrySubManager $registrySubManager
      * @param Builder $builder
      * @param EntityManagerInterface $master
      */
-    public function __construct(RegistryRepository $registryRepository, RegistrySubManager $registrySubManager, Builder $builder, EntityManagerInterface $master)
-    {
+    public function __construct(
+        RegistryRepository $registryRepository,
+        RegistrySubManager $registrySubManager,
+        Builder $builder,
+        EntityManagerInterface $master
+    ) {
         $this->registryRepository = $registryRepository;
         $this->registrySubManager = $registrySubManager;
         $this->builder = $builder;

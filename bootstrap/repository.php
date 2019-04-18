@@ -9,8 +9,9 @@ declare(strict_types=1);
 
 namespace Ixocreate\Registry;
 
+use Ixocreate\Database\Repository\RepositoryConfigurator;
 use Ixocreate\Registry\Repository\RegistryRepository;
 
-/** @var \Ixocreate\Database\Repository\RepositoryConfigurator $repository */
+/** @var RepositoryConfigurator $repository */
 
 $repository->addRepository(RegistryRepository::class);

@@ -11,14 +11,14 @@ namespace Ixocreate\Registry\Entity;
 
 use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\Mapping\Builder\ClassMetadataBuilder;
-use Ixocreate\Type\Entity\DateTimeType;
-use Ixocreate\Type\Entity\SchemaType;
-use Ixocreate\Entity\DatabaseEntityInterface;
-use Ixocreate\Type\TypeInterface;
+use Ixocreate\Database\DatabaseEntityInterface;
 use Ixocreate\Entity\Definition;
 use Ixocreate\Entity\DefinitionCollection;
 use Ixocreate\Entity\EntityInterface;
 use Ixocreate\Entity\EntityTrait;
+use Ixocreate\Type\Entity\DateTimeType;
+use Ixocreate\Type\Entity\SchemaType;
+use Ixocreate\Type\TypeInterface;
 
 final class Registry implements EntityInterface, DatabaseEntityInterface
 {

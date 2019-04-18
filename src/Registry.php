@@ -9,10 +9,10 @@ declare(strict_types=1);
 
 namespace Ixocreate\Registry;
 
-use Ixocreate\Type\Entity\SchemaType;
-use Ixocreate\Schema\StructuralGroupingInterface;
 use Ixocreate\Registry\Repository\RegistryRepository;
 use Ixocreate\Schema\Builder;
+use Ixocreate\Schema\StructuralGroupingInterface;
+use Ixocreate\Type\Entity\SchemaType;
 
 final class Registry implements RegistryInterface
 {
@@ -33,11 +33,15 @@ final class Registry implements RegistryInterface
 
     /**
      * Registry constructor.
+     *
      * @param RegistryRepository $registryRepository
      * @param RegistrySubManager $registrySubManager
      */
-    public function __construct(RegistryRepository $registryRepository, RegistrySubManager $registrySubManager, Builder $builder)
-    {
+    public function __construct(
+        RegistryRepository $registryRepository,
+        RegistrySubManager $registrySubManager,
+        Builder $builder
+    ) {
         $this->registryRepository = $registryRepository;
         $this->registrySubManager = $registrySubManager;
         $this->builder = $builder;
