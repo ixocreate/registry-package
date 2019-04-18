@@ -9,7 +9,11 @@ declare(strict_types=1);
 
 namespace Ixocreate\Package\Registry;
 
-use Ixocreate\Package\Registry\Command\UpdateCommand;
+interface RegistryInterface
+{
+    public function all(): array;
 
-/** @var \Ixocreate\Package\CommandBus\Configurator $commandBus */
-$commandBus->addCommand(UpdateCommand::class);
+    public function has(string $name): bool;
+
+    public function get(string $name);
+}

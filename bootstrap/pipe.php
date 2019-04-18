@@ -7,14 +7,14 @@
 
 declare(strict_types=1);
 
-namespace Ixocreate\Registry;
+namespace Ixocreate\Package\Registry;
 
-use Ixocreate\Admin\Config\AdminConfig;
-use Ixocreate\ApplicationHttp\Pipe\GroupPipeConfigurator;
-use Ixocreate\ApplicationHttp\Pipe\PipeConfigurator;
-use Ixocreate\Registry\Action\DetailAction;
-use Ixocreate\Registry\Action\IndexAction;
-use Ixocreate\Registry\Action\UpdateAction;
+use Ixocreate\Package\Admin\Config\AdminConfig;
+use Ixocreate\Application\Http\Pipe\GroupPipeConfigurator;
+use Ixocreate\Application\Http\Pipe\PipeConfigurator;
+use Ixocreate\Package\Registry\Action\DetailAction;
+use Ixocreate\Package\Registry\Action\IndexAction;
+use Ixocreate\Package\Registry\Action\UpdateAction;
 
 /** @var PipeConfigurator $pipe */
 

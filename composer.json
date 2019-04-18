@@ -1,6 +1,6 @@
 {
-    "name": "ixocreate/registry",
-    "description": "IXOCREATE Registry",
+    "name": "ixocreate/registry-package",
+    "description": "IXOCREATE Registry Package",
     "license": "MIT",
     "type": "library",
     "authors": [
@@ -12,23 +12,22 @@
     "prefer-stable": true,
     "require": {
         "php": "^7.1",
-        "ixocreate/registry-contract": "dev-develop",
-        "ixocreate/contract": "dev-develop"
+        "ixocreate/application": "dev-consolidate"
     },
     "require-dev": {
-        "ixocreate/coding-standard": "^1.0.1",
+        "ixocreate/coding-standard": "^1.0",
         "php-coveralls/php-coveralls": "^2.1",
         "phpunit/phpunit": "^7.0"
     },
     "autoload": {
         "psr-4": {
-            "Ixocreate\\Registry\\": "src/"
+            "Ixocreate\\Package\\Registry\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "IxocreateMisc\\Registry\\": "tests/misc/",
-            "IxocreateTest\\Registry\\": "tests/src/"
+            "Ixocreate\\Misc\\Registry\\": "tests/misc/",
+            "Ixocreate\\Test\\Registry\\": "tests/src/"
         }
     },
     "scripts": {

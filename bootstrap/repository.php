@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Ixocreate\Registry;
+namespace Ixocreate\Package\Registry;
 
-use Ixocreate\Registry\Repository\RegistryRepository;
+use Ixocreate\Package\Registry\Repository\RegistryRepository;
 
-/** @var \Ixocreate\Database\Repository\RepositoryConfigurator $repository */
+/** @var \Ixocreate\Package\Database\Repository\RepositoryConfigurator $repository */
 
 $repository->addRepository(RegistryRepository::class);

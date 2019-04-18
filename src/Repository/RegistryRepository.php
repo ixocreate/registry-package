@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Ixocreate\Registry\Repository;
+namespace Ixocreate\Package\Registry\Repository;
 
-use Ixocreate\Database\Repository\AbstractRepository;
-use Ixocreate\Registry\Entity\Registry;
+use Ixocreate\Package\Database\Repository\AbstractRepository;
+use Ixocreate\Package\Registry\Entity\Registry;
 
 final class RegistryRepository extends AbstractRepository
 {

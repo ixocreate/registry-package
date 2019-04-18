@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Ixocreate\Registry\Response;
+namespace Ixocreate\Package\Registry\Response;
 
-use Ixocreate\Admin\Response\ApiSuccessResponse;
-use Ixocreate\Contract\Schema\SchemaInterface;
+use Ixocreate\Package\Admin\Response\ApiSuccessResponse;
+use Ixocreate\Package\Schema\SchemaInterface;
 
 final class RegistryDetailResponse extends ApiSuccessResponse
 {

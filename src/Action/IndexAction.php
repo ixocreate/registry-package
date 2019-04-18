@@ -7,13 +7,13 @@
 
 declare(strict_types=1);
 
-namespace Ixocreate\Registry\Action;
+namespace Ixocreate\Package\Registry\Action;
 
-use Ixocreate\Admin\Response\ApiSuccessResponse;
-use Ixocreate\Contract\Registry\RegistryEntryInterface;
-use Ixocreate\Registry\RegistrySubManager;
-use Ixocreate\Schema\Listing\ListElement;
-use Ixocreate\Schema\Listing\ListSchema;
+use Ixocreate\Package\Admin\Response\ApiSuccessResponse;
+use Ixocreate\Package\Registry\RegistryEntryInterface;
+use Ixocreate\Package\Registry\RegistrySubManager;
+use Ixocreate\Package\Schema\Listing\ListElement;
+use Ixocreate\Package\Schema\Listing\ListSchema;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;

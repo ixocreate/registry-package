@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Ixocreate\Registry;
+namespace Ixocreate\Package\Registry;
 
-use \Ixocreate\ApplicationHttp\Middleware\MiddlewareConfigurator;
-use Ixocreate\Registry\Action\DetailAction;
-use Ixocreate\Registry\Action\IndexAction;
-use Ixocreate\Registry\Action\UpdateAction;
+use \Ixocreate\Application\Http\Middleware\MiddlewareConfigurator;
+use Ixocreate\Package\Registry\Action\DetailAction;
+use Ixocreate\Package\Registry\Action\IndexAction;
+use Ixocreate\Package\Registry\Action\UpdateAction;
 
 /** @var MiddlewareConfigurator $middleware */
 

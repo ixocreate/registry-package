@@ -7,14 +7,14 @@
 
 declare(strict_types=1);
 
-namespace Ixocreate\Registry;
+namespace Ixocreate\Package\Registry;
 
-use Ixocreate\CommonTypes\Entity\SchemaType;
-use Ixocreate\Contract\Registry\RegistryEntryInterface;
-use Ixocreate\Contract\Registry\RegistryInterface;
-use Ixocreate\Contract\Schema\StructuralGroupingInterface;
-use Ixocreate\Registry\Repository\RegistryRepository;
-use Ixocreate\Schema\Builder;
+use Ixocreate\Package\Type\Entity\SchemaType;
+use Ixocreate\Package\Registry\RegistryEntryInterface;
+use Ixocreate\Package\Registry\RegistryInterface;
+use Ixocreate\Package\Schema\StructuralGroupingInterface;
+use Ixocreate\Package\Registry\Repository\RegistryRepository;
+use Ixocreate\Package\Schema\Builder;
 
 final class Registry implements RegistryInterface
 {
