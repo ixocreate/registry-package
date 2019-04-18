@@ -9,9 +9,9 @@ declare(strict_types=1);
 
 namespace Ixocreate\Registry\Package;
 
-use Ixocreate\Application\ConfiguratorRegistryInterface;
-use Ixocreate\Application\Package\PackageInterface;
-use Ixocreate\Application\ServiceRegistryInterface;
+use Ixocreate\Application\Service\Configurator\ConfiguratorRegistryInterface;
+use Ixocreate\Application\PackageInterface;
+use Ixocreate\Application\Service\Registry\ServiceRegistryInterface;
 use Ixocreate\ServiceManager\ServiceManagerInterface;
 use Ixocreate\Registry\Package\Bootstrap\RegistryBootstrapItem;
 

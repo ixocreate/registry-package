@@ -15,10 +15,10 @@ use Ixocreate\Type\Package\Entity\DateTimeType;
 use Ixocreate\Type\Package\Entity\SchemaType;
 use Ixocreate\Entity\DatabaseEntityInterface;
 use Ixocreate\Type\Package\TypeInterface;
-use Ixocreate\Entity\Package\Entity\Definition;
-use Ixocreate\Entity\Package\Entity\DefinitionCollection;
-use Ixocreate\Entity\Package\Entity\EntityInterface;
-use Ixocreate\Entity\Package\Entity\EntityTrait;
+use Ixocreate\Entity\Package\Definition;
+use Ixocreate\Entity\Package\DefinitionCollection;
+use Ixocreate\Entity\Package\EntityInterface;
+use Ixocreate\Entity\Package\EntityTrait;
 
 final class Registry implements EntityInterface, DatabaseEntityInterface
 {

@@ -10,7 +10,6 @@ declare(strict_types=1);
 namespace Ixocreate\Registry\Package;
 
 use Ixocreate\Type\Package\Entity\SchemaType;
-use Ixocreate\Registry\Package\RegistryEntryInterface;
 use Ixocreate\Schema\Package\BuilderInterface;
 use Ixocreate\Schema\Package\SchemaInterface;
 use Ixocreate\Schema\Package\SchemaProviderInterface;

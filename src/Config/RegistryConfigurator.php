@@ -9,12 +9,12 @@ declare(strict_types=1);
 
 namespace Ixocreate\Registry\Package\Config;
 
-use Ixocreate\Application\ConfiguratorInterface;
-use Ixocreate\Application\ServiceRegistryInterface;
+use Ixocreate\Application\Service\Configurator\ConfiguratorInterface;
+use Ixocreate\Application\Service\Registry\ServiceRegistryInterface;
 use Ixocreate\Registry\Package\RegistryEntryInterface;
 use Ixocreate\Registry\Package\RegistrySubManager;
 use Ixocreate\ServiceManager\Factory\AutowireFactory;
-use Ixocreate\ServiceManager\SubManager\SubManagerConfigurator;
+use Ixocreate\Application\Service\SubManagerConfigurator;
 
 final class RegistryConfigurator implements ConfiguratorInterface
 {

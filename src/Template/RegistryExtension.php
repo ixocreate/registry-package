@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Ixocreate\Registry\Package\Template;
 
 use Ixocreate\Registry\Package\RegistryInterface;
-use Ixocreate\Template\ExtensionInterface;
+use Ixocreate\Template\Package\ExtensionInterface;
 use Ixocreate\Registry\Package\Registry;
 
 final class RegistryExtension implements ExtensionInterface

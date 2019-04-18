@@ -10,8 +10,6 @@ declare(strict_types=1);
 namespace Ixocreate\Registry\Package;
 
 use Ixocreate\Type\Package\Entity\SchemaType;
-use Ixocreate\Registry\Package\RegistryEntryInterface;
-use Ixocreate\Registry\Package\RegistryInterface;
 use Ixocreate\Schema\Package\StructuralGroupingInterface;
 use Ixocreate\Registry\Package\Repository\RegistryRepository;
 use Ixocreate\Schema\Package\Builder;
