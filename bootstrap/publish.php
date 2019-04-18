@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Ixocreate\Registry\Package;
+namespace Ixocreate\Registry;
 
 /** @var PublishConfigurator $publish */
 use Ixocreate\Application\Publish\PublishConfigurator;

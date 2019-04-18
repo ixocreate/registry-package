@@ -7,14 +7,14 @@
 
 declare(strict_types=1);
 
-namespace Ixocreate\Registry\Package\Action;
+namespace Ixocreate\Registry\Action;
 
-use Ixocreate\Admin\Package\Response\ApiErrorResponse;
-use Ixocreate\Admin\Package\Response\ApiSuccessResponse;
+use Ixocreate\Admin\Response\ApiErrorResponse;
+use Ixocreate\Admin\Response\ApiSuccessResponse;
 use Ixocreate\CommandBus\CommandBus;
-use Ixocreate\Registry\Package\Command\UpdateCommand;
-use Ixocreate\Registry\Package\RegistrySubManager;
-use Ixocreate\Registry\Package\Repository\RegistryRepository;
+use Ixocreate\Registry\Command\UpdateCommand;
+use Ixocreate\Registry\RegistrySubManager;
+use Ixocreate\Registry\Repository\RegistryRepository;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;

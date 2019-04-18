@@ -7,15 +7,15 @@
 
 declare(strict_types=1);
 
-namespace Ixocreate\Registry\Package\Action;
+namespace Ixocreate\Registry\Action;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
-use Ixocreate\Registry\Package\Entity\Registry;
-use Ixocreate\Registry\Package\RegistrySubManager;
-use Ixocreate\Registry\Package\Repository\RegistryRepository;
-use Ixocreate\Registry\Package\Response\RegistryDetailResponse;
-use Ixocreate\Schema\Package\Builder;
+use Ixocreate\Registry\Entity\Registry;
+use Ixocreate\Registry\RegistrySubManager;
+use Ixocreate\Registry\Repository\RegistryRepository;
+use Ixocreate\Registry\Response\RegistryDetailResponse;
+use Ixocreate\Schema\Builder;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;

@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Ixocreate\Registry\Package;
+namespace Ixocreate\Registry;
 
-use Ixocreate\Registry\Package\RegistryInterface;
-use Ixocreate\Registry\Package\Factory\RegistryFactory;
+use Ixocreate\Registry\RegistryInterface;
+use Ixocreate\Registry\Factory\RegistryFactory;
 use Ixocreate\ServiceManager\ServiceManagerConfigurator;
 
 /** @var ServiceManagerConfigurator $serviceManager */

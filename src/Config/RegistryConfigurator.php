@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Ixocreate\Registry\Package\Config;
+namespace Ixocreate\Registry\Config;
 
 use Ixocreate\Application\Service\Configurator\ConfiguratorInterface;
 use Ixocreate\Application\Service\Registry\ServiceRegistryInterface;
-use Ixocreate\Registry\Package\RegistryEntryInterface;
-use Ixocreate\Registry\Package\RegistrySubManager;
+use Ixocreate\Registry\RegistryEntryInterface;
+use Ixocreate\Registry\RegistrySubManager;
 use Ixocreate\ServiceManager\Factory\AutowireFactory;
 use Ixocreate\Application\Service\SubManagerConfigurator;
 
