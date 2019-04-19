@@ -11,7 +11,7 @@ namespace Ixocreate\Registry\Template;
 
 use Ixocreate\Registry\Registry;
 use Ixocreate\Registry\RegistryInterface;
-use Ixocreate\Template\ExtensionInterface;
+use Ixocreate\Template\Extension\ExtensionInterface;
 
 final class RegistryExtension implements ExtensionInterface
 {
