@@ -13,7 +13,6 @@ use Ixocreate\Application\Service\ServiceManagerConfigurator;
 use Ixocreate\Registry\Factory\RegistryFactory;
 
 /** @var ServiceManagerConfigurator $serviceManager */
-
 $serviceManager->addSubManager(RegistrySubManager::class);
 
 $serviceManager->addFactory(RegistryInterface::class, RegistryFactory::class);

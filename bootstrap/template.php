@@ -13,5 +13,4 @@ use Ixocreate\Registry\Template\RegistryExtension;
 use Ixocreate\Template\TemplateConfigurator;
 
 /** @var TemplateConfigurator $template */
-
 $template->addExtension(RegistryExtension::class);
