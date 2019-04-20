@@ -15,7 +15,6 @@ use Ixocreate\Registry\Action\IndexAction;
 use Ixocreate\Registry\Action\UpdateAction;
 
 /** @var MiddlewareConfigurator $middleware */
-
 $middleware->addAction(IndexAction::class);
 $middleware->addAction(DetailAction::class);
 $middleware->addAction(UpdateAction::class);
