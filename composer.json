@@ -10,7 +10,7 @@
     ],
     "require": {
         "php": "^7.1",
-        "ixocreate/application": "^0.1",
+        "ixocreate/application": "^0.2",
         "ixocreate/admin-package": "^0.2"
     },
     "require-dev": {
