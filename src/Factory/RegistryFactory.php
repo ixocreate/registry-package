@@ -13,7 +13,7 @@ use Ixocreate\Database\Repository\Factory\RepositorySubManager;
 use Ixocreate\Registry\Registry;
 use Ixocreate\Registry\RegistrySubManager;
 use Ixocreate\Registry\Repository\RegistryRepository;
-use Ixocreate\Schema\Builder;
+use Ixocreate\Schema\Builder\Builder;
 use Ixocreate\ServiceManager\FactoryInterface;
 use Ixocreate\ServiceManager\ServiceManagerInterface;
 

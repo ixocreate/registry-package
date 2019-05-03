@@ -12,12 +12,12 @@ namespace Ixocreate\Registry\Command;
 use Doctrine\ORM\EntityManagerInterface;
 use Ixocreate\CommandBus\Command\AbstractCommand;
 use Ixocreate\CommandBus\Command\CommandInterface;
-use Ixocreate\Entity\Type\Type;
 use Ixocreate\Registry\Entity\Registry;
 use Ixocreate\Registry\RegistrySubManager;
 use Ixocreate\Registry\Repository\RegistryRepository;
-use Ixocreate\Schema\Builder;
-use Ixocreate\Type\Entity\SchemaType;
+use Ixocreate\Schema\Builder\Builder;
+use Ixocreate\Schema\Type\SchemaType;
+use Ixocreate\Schema\Type\Type;
 
 final class UpdateCommand extends AbstractCommand implements CommandInterface
 {

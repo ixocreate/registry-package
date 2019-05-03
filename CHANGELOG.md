@@ -3,6 +3,7 @@
 ## [Unreleased](https://github.com/ixocreate/registry-package/compare/0.2.0...develop)
 ### Changed
 - Upgrade Publish config to Application v0.2
+- Upgrade to Admin Package v0.3
 
 ## [v0.2.0 (2019-04-23)](https://github.com/ixocreate/registry-package/compare/0.1.0...0.2.0)
 ### Changed
