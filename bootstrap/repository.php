@@ -13,5 +13,4 @@ use Ixocreate\Database\Repository\RepositoryConfigurator;
 use Ixocreate\Registry\Repository\RegistryRepository;
 
 /** @var RepositoryConfigurator $repository */
-
 $repository->addRepository(RegistryRepository::class);

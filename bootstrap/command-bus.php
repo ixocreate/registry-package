@@ -13,5 +13,4 @@ use Ixocreate\CommandBus\CommandBusConfigurator;
 use Ixocreate\Registry\Command\UpdateCommand;
 
 /** @var CommandBusConfigurator $commandBus */
-
 $commandBus->addCommand(UpdateCommand::class);

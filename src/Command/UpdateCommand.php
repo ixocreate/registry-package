@@ -11,7 +11,7 @@ namespace Ixocreate\Registry\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Ixocreate\CommandBus\Command\AbstractCommand;
-use Ixocreate\CommandBus\CommandInterface;
+use Ixocreate\CommandBus\Command\CommandInterface;
 use Ixocreate\Entity\Type\Type;
 use Ixocreate\Registry\Entity\Registry;
 use Ixocreate\Registry\RegistrySubManager;
