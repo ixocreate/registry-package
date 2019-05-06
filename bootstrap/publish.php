@@ -12,5 +12,4 @@ namespace Ixocreate\Registry;
 use Ixocreate\Application\Publish\PublishConfigurator;
 
 /** @var PublishConfigurator $publish */
-
 $publish->addSource('migrations', __DIR__ . '/../resources/migrations');
