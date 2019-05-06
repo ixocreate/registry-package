@@ -11,7 +11,7 @@ namespace Ixocreate\Registry;
 
 use Ixocreate\Registry\Repository\RegistryRepository;
 use Ixocreate\Schema\Builder\Builder;
-use Ixocreate\Schema\StructuralGroupingInterface;
+use Ixocreate\Schema\Element\StructuralGroupingInterface;
 use Ixocreate\Schema\Type\SchemaType;
 
 final class Registry implements RegistryInterface

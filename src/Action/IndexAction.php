@@ -12,7 +12,7 @@ namespace Ixocreate\Registry\Action;
 use Ixocreate\Admin\Response\ApiSuccessResponse;
 use Ixocreate\Registry\RegistryEntryInterface;
 use Ixocreate\Registry\RegistrySubManager;
-use Ixocreate\Schema\ListElement\ListListElement;
+use Ixocreate\Schema\ListElement\TextListElement;
 use Ixocreate\Schema\ListSchema\ListSchema;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -59,7 +59,7 @@ final class IndexAction implements MiddlewareInterface
         $sorting = null;
 
         $schema = (new ListSchema())
-            ->withAddedElement(new ListListElement('label', 'Bezeichnung', true, false));
+            ->withAddedElement(new TextListElement('label', 'Bezeichnung', true, false));
 
         $count = \count($registryList);
 
