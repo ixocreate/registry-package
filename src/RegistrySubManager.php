@@ -9,12 +9,12 @@ declare(strict_types=1);
 
 namespace Ixocreate\Registry;
 
-use Ixocreate\Schema\BuilderInterface;
+use Ixocreate\Schema\Builder\BuilderInterface;
 use Ixocreate\Schema\Schema;
 use Ixocreate\Schema\SchemaInterface;
 use Ixocreate\Schema\SchemaProviderInterface;
+use Ixocreate\Schema\Type\SchemaType;
 use Ixocreate\ServiceManager\SubManager\SubManager;
-use Ixocreate\Type\Entity\SchemaType;
 
 final class RegistrySubManager extends SubManager implements SchemaProviderInterface
 {

@@ -15,7 +15,7 @@ use Ixocreate\Registry\Entity\Registry;
 use Ixocreate\Registry\RegistrySubManager;
 use Ixocreate\Registry\Repository\RegistryRepository;
 use Ixocreate\Registry\Response\RegistryDetailResponse;
-use Ixocreate\Schema\Builder;
+use Ixocreate\Schema\Builder\Builder;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
