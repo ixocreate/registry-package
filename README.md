@@ -1,7 +1,7 @@
 # IXOCREATE Registry Package
 
 [![Build Status](https://travis-ci.com/ixocreate/registry-package.svg?branch=master)](https://travis-ci.com/ixocreate/registry-package)
-[![Coverage Status](https://coveralls.io/repos/github/ixocreate/registry-package/badge.svg?branch=develop)](https://coveralls.io/github/ixocreate/registry-package?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/github/ixocreate/registry-package/badge.svg?branch=master)](https://coveralls.io/github/ixocreate/registry-package?branch=master)
 [![Packagist](https://img.shields.io/packagist/v/ixocreate/registry-package.svg)](https://packagist.org/packages/ixocreate/registry-package)
 [![PHP Version](https://img.shields.io/packagist/php-v/ixocreate/registry-package.svg)](https://packagist.org/packages/ixocreate/registry-package)
 [![License](https://img.shields.io/github/license/ixocreate/registry-package.svg)](LICENSE)
