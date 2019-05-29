@@ -1,7 +1,7 @@
 <?php
 /**
  * @link https://github.com/ixocreate
- * @copyright IXOCREATE GmbH
+ * @copyright IXOLIT GmbH
  * @license MIT License
  */
 
@@ -13,7 +13,7 @@ use Ixocreate\Database\Repository\Factory\RepositorySubManager;
 use Ixocreate\Registry\Registry;
 use Ixocreate\Registry\RegistrySubManager;
 use Ixocreate\Registry\Repository\RegistryRepository;
-use Ixocreate\Schema\Builder\Builder;
+use Ixocreate\Schema\Builder\BuilderInterface;
 use Ixocreate\ServiceManager\FactoryInterface;
 use Ixocreate\ServiceManager\ServiceManagerInterface;
 
@@ -27,15 +27,15 @@ final class RegistryFactory implements FactoryInterface
      */
     public function __invoke(ServiceManagerInterface $container, $requestedName, array $options = null)
     {
-        /** @var RepositorySubManager $test */
+        /** @var RepositorySubManager $repositorySubManager */
         $repositorySubManager = $container->get(RepositorySubManager::class);
         $registryRepository = $repositorySubManager->get(RegistryRepository::class);
 
         /** @var RegistrySubManager $registrySubManager */
         $registrySubManager = $container->get(RegistrySubManager::class);
 
-        /** @var Builder $builder */
-        $builder = $container->get(Builder::class);
+        /** @var BuilderInterface $builder */
+        $builder = $container->get(BuilderInterface::class);
 
         return new Registry($registryRepository, $registrySubManager, $builder);
     }
