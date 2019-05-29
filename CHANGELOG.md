@@ -1,6 +1,8 @@
 # Release Notes
 
 ## [Unreleased](https://github.com/ixocreate/registry-package/compare/0.3.1...develop)
+### Changed
+- change Builder dependencies to BuilderInterface
 
 ## [v0.3.1 (2019-05-20)](https://github.com/ixocreate/registry-package/compare/0.3.0...0.3.1)
 ### Fixed

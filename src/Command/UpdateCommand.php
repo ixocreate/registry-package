@@ -15,7 +15,7 @@ use Ixocreate\CommandBus\Command\CommandInterface;
 use Ixocreate\Registry\Entity\Registry;
 use Ixocreate\Registry\RegistrySubManager;
 use Ixocreate\Registry\Repository\RegistryRepository;
-use Ixocreate\Schema\Builder\Builder;
+use Ixocreate\Schema\Builder\BuilderInterface;
 use Ixocreate\Schema\Type\SchemaType;
 use Ixocreate\Schema\Type\Type;
 
@@ -32,7 +32,7 @@ final class UpdateCommand extends AbstractCommand implements CommandInterface
     private $registrySubManager;
 
     /**
-     * @var Builder
+     * @var BuilderInterface
      */
     private $builder;
 
@@ -46,13 +46,13 @@ final class UpdateCommand extends AbstractCommand implements CommandInterface
      *
      * @param RegistryRepository $registryRepository
      * @param RegistrySubManager $registrySubManager
-     * @param Builder $builder
+     * @param BuilderInterface $builder
      * @param EntityManagerInterface $master
      */
     public function __construct(
         RegistryRepository $registryRepository,
         RegistrySubManager $registrySubManager,
-        Builder $builder,
+        BuilderInterface $builder,
         EntityManagerInterface $master
     ) {
         $this->registryRepository = $registryRepository;

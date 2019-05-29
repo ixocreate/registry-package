@@ -15,7 +15,7 @@ use Ixocreate\Registry\Entity\Registry;
 use Ixocreate\Registry\RegistrySubManager;
 use Ixocreate\Registry\Repository\RegistryRepository;
 use Ixocreate\Registry\Response\RegistryDetailResponse;
-use Ixocreate\Schema\Builder\Builder;
+use Ixocreate\Schema\Builder\BuilderInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -34,7 +34,7 @@ final class DetailAction implements MiddlewareInterface
     private $registrySubManager;
 
     /**
-     * @var Builder
+     * @var BuilderInterface
      */
     private $builder;
 
@@ -48,13 +48,13 @@ final class DetailAction implements MiddlewareInterface
      *
      * @param RegistryRepository $registryRepository
      * @param RegistrySubManager $registrySubManager
-     * @param Builder $builder
+     * @param BuilderInterface $builder
      * @param EntityManagerInterface $master
      */
     public function __construct(
         RegistryRepository $registryRepository,
         RegistrySubManager $registrySubManager,
-        Builder $builder,
+        BuilderInterface $builder,
         EntityManagerInterface $master
     ) {
         $this->registryRepository = $registryRepository;
