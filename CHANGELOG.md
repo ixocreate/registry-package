@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/ixocreate/registry-package/compare/0.3.2...develop)
+## [Unreleased](https://github.com/ixocreate/registry-package/compare/0.3.3...develop)
+
+## [v0.3.3 (2019-08-22)](https://github.com/ixocreate/registry-package/compare/0.3.2...0.3.3)
+### Changed
+- TextListElement is now searchable
 
 ## [v0.3.2 (2019-05-29)](https://github.com/ixocreate/registry-package/compare/0.3.1...0.3.2)
 ### Changed
