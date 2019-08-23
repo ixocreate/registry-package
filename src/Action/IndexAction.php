@@ -48,20 +48,43 @@ final class IndexAction implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        $query = $request->getQueryParams();
+        $offset = (\array_key_exists('offset', $query)) ? (int)$query['offset'] : 0;
+        $limit = (\array_key_exists('limit', $query)) ? (int)$query['limit'] : 0;
+        $search = (\array_key_exists('search', $query)) ? $query['search'] : '';
+
         $registryList = [];
 
-        foreach ($this->registrySubManager->getServices() as $entry) {
+        foreach ($this->registrySubManager->getServices() as $key => $entry) {
             /** @var RegistryEntryInterface $registryEntry */
             $registryEntry = $this->registrySubManager->get($entry);
             $registryList[] = ['id' => $registryEntry::serviceName(), 'label' => $registryEntry->label()];
         }
 
-        $sorting = null;
+        $count = \count($registryList);
+
+        // TODO:: find better way for search
+        if ($search) {
+            $search = \ucfirst($search);
+            $haystack = [];
+            foreach ($registryList as $key => $entry) {
+                $haystack[$key] = $entry['label'];
+            }
+            $input = \preg_quote($search, '~');
+            $result = \preg_grep('~' . $input . '~', $haystack);
+            if ($result) {
+                foreach ($result as $key => $entry) {
+                    $newResult[] = $registryList[$key];
+                }
+                $registryList = $newResult;
+            }
+
+        }
+
+        $registryList = \array_slice($registryList, $offset, $limit);
 
         $schema = (new ListSchema())
             ->withAddedElement(new TextListElement('label', 'Bezeichnung', true, true));
-
-        $count = \count($registryList);
 
         return new ApiSuccessResponse(['schema' => $schema, 'items' => $registryList, 'meta' => ['count' => $count]]);
     }
