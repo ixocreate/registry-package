@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/ixocreate/registry-package/compare/0.3.4...develop)
+## [Unreleased](https://github.com/ixocreate/registry-package/compare/0.3.5...develop)
+
+## [v0.3.5 (2019-08-23)](https://github.com/ixocreate/registry-package/compare/0.3.4...0.3.5)
+### Fixed
+- Pagination
 
 ## [v0.3.4 (2019-08-22)](https://github.com/ixocreate/registry-package/compare/0.3.3...0.3.4)
 ### Fixed
