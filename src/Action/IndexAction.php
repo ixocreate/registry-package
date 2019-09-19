@@ -78,7 +78,6 @@ final class IndexAction implements MiddlewareInterface
                 }
                 $registryList = $newResult;
             }
-
         }
 
         $registryList = \array_slice($registryList, $offset, $limit);
