@@ -1,6 +1,14 @@
 # Release Notes
 
-## [Unreleased](https://github.com/ixocreate/registry-package/compare/0.3.4...develop)
+## [Unreleased](https://github.com/ixocreate/registry-package/compare/0.3.6...develop)
+
+## [v0.3.6 (2020-01-10)](https://github.com/ixocreate/registry-package/compare/0.3.5...0.3.6)
+### Fixed
+- Further Query Parameter consideration
+### Changed
+- Search Pattern adjustment
+
+## [v0.3.5 (2019-08-23)](https://github.com/ixocreate/registry-package/compare/0.3.4...0.3.5)
 
 ## [v0.3.4 (2019-08-22)](https://github.com/ixocreate/registry-package/compare/0.3.3...0.3.4)
 ### Fixed

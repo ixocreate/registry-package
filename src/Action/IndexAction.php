@@ -52,6 +52,8 @@ final class IndexAction implements MiddlewareInterface
         $offset = (\array_key_exists('offset', $query)) ? (int)$query['offset'] : 0;
         $limit = (\array_key_exists('limit', $query)) ? (int)$query['limit'] : 0;
         $search = (\array_key_exists('search', $query)) ? $query['search'] : '';
+        $filter = (\array_key_exists('filter', $query)) ? $query['filter'] : [];
+
 
         $registryList = [];
 
@@ -61,27 +63,31 @@ final class IndexAction implements MiddlewareInterface
             $registryList[] = ['id' => $registryEntry::serviceName(), 'label' => $registryEntry->label()];
         }
 
-        $count = \count($registryList);
-
-        // TODO:: find better way for search
+        $input = '';
         if ($search) {
-            $search = \ucfirst($search);
+            $input = $search;
+        }
+        if (isset($filter['label'])) {
+            $input = $filter['label'];
+        }
+        if ($input) {
             $haystack = [];
             foreach ($registryList as $key => $entry) {
                 $haystack[$key] = $entry['label'];
             }
-            $input = \preg_quote($search, '~');
-            $result = \preg_grep('~' . $input . '~', $haystack);
+            $input = \preg_quote($input, '~');
+            $result = \preg_grep('/' . $input . '/i', $haystack);
             if ($result) {
                 foreach ($result as $key => $entry) {
                     $newResult[] = $registryList[$key];
                 }
                 $registryList = $newResult;
             }
-
         }
 
         $registryList = \array_slice($registryList, $offset, $limit);
+
+        $count = \count($registryList);
 
         $schema = (new ListSchema())
             ->withAddedElement(new TextListElement('label', 'Bezeichnung', true, true));
