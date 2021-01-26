@@ -57,7 +57,7 @@ final class IndexAction implements MiddlewareInterface
 
         $registryList = [];
 
-        foreach ($this->registrySubManager->getServices() as $key => $entry) {
+        foreach ($this->registrySubManager->services() as $key => $entry) {
             /** @var RegistryEntryInterface $registryEntry */
             $registryEntry = $this->registrySubManager->get($entry);
             $registryList[] = ['id' => $registryEntry::serviceName(), 'label' => $registryEntry->label()];

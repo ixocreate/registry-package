@@ -12,13 +12,13 @@
         }
     ],
     "require": {
-        "php": "^7.1",
-        "ixocreate/application": "^0.2",
-        "ixocreate/admin-package": "^0.3"
+        "php": "^7.2 || ^8.0",
+        "ixocreate/application": "dev-develop",
+        "ixocreate/admin-package": "dev-develop"
     },
     "require-dev": {
         "ixocreate/coding-standard": "^2.0",
-        "ixocreate/test": "dev-develop"
+        "ixocreate/test": "^0.1"
     },
     "autoload": {
         "psr-4": {

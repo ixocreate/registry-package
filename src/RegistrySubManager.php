@@ -14,9 +14,9 @@ use Ixocreate\Schema\Schema;
 use Ixocreate\Schema\SchemaInterface;
 use Ixocreate\Schema\SchemaProviderInterface;
 use Ixocreate\Schema\Type\SchemaType;
-use Ixocreate\ServiceManager\SubManager\SubManager;
+use Ixocreate\ServiceManager\SubManager\AbstractSubManager;
 
-final class RegistrySubManager extends SubManager implements SchemaProviderInterface
+final class RegistrySubManager extends AbstractSubManager implements SchemaProviderInterface
 {
     /**
      * @param $name

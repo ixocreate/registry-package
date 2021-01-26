@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/ixocreate/registry-package/compare/0.3.6...develop)
+## [Unreleased](https://github.com/ixocreate/registry-package/compare/0.4.0...develop)
+
+## [v0.4.0 (2021-01-26)](https://github.com/ixocreate/translation-package/compare/0.3.6...0.4.0)
+### Changed
+- Upgrade to Application 0.3
 
 ## [v0.3.6 (2020-01-10)](https://github.com/ixocreate/registry-package/compare/0.3.5...0.3.6)
 ### Fixed

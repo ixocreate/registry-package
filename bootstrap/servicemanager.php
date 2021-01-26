@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Ixocreate\Registry;
 
-use Ixocreate\Application\Service\ServiceManagerConfigurator;
+use Ixocreate\Application\ServiceManager\ServiceManagerConfigurator;
 use Ixocreate\Registry\Factory\RegistryFactory;
 
 /** @var ServiceManagerConfigurator $serviceManager */
